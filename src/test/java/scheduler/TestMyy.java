@@ -7,6 +7,5 @@ public class TestMyy extends ConfigurationScheduler {
 
     @Test
     public void test() {
-
     }
 }
