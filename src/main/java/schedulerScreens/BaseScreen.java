@@ -6,10 +6,14 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BaseScreen {
 
     AppiumDriver<MobileElement> driver;
+    Logger logger = LoggerFactory.getLogger(BaseScreen.class);
+
 
     public BaseScreen(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
@@ -46,4 +50,10 @@ public class BaseScreen {
         new WebDriverWait(driver, timer)
                 .until(ExpectedConditions.textToBePresentInElement(el, text));
     }
+
+    public void logout(MobileElement el, MobileElement el2){
+        el.click();
+        el2.click();
+    }
+
 }

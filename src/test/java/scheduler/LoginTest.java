@@ -1,20 +1,44 @@
 package scheduler;
 
 import config.ConfigurationScheduler;
+import config.MyDataProvider;
 import models.Auth;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import schedulerScreens.HomeScreen;
 import schedulerScreens.LoginScreen;
-import schedulerScreens.SplashScreen;
 
 public class LoginTest extends ConfigurationScheduler {
 
-    @Test
-    public void loginSuccessTest() {
-        boolean isFabPresent = new SplashScreen(driver)
-                .checkVersion("0.0.3")
-                .fillEmail("hog@gmail.com")
-                .fillPassword("12345hoSg!")
+    @AfterMethod
+    public void post() {
+        if (new HomeScreen(driver)
+                .isLogged()) {
+            new HomeScreen(driver)
+                    .setLogout();
+        }
+    }
+
+//    @Test(dataProvider = "loginDto", dataProviderClass = MyDataProvider.class)
+//    public void loginSuccessTest(String version, String email, String password) {
+//        boolean isFabPresent = new SplashScreen(driver)
+//                .checkVersion(version)
+//                .fillEmail(email)
+//                .fillPassword(password)
+//                .clickLoginBtn()
+//                .skipWizard()
+//                .isFabAddPresent();
+//
+//
+//        Assert.assertTrue(isFabPresent);
+//    }
+
+    @Test(dataProvider = "loginDto2", dataProviderClass = MyDataProvider.class)
+    public void loginStartLoginScreen(String email, String password) {
+        boolean isFabPresent = new LoginScreen(driver)
+                .fillEmail(email)
+                .fillPassword(password)
                 .clickLoginBtn()
                 .skipWizard()
                 .isFabAddPresent();
@@ -22,56 +46,58 @@ public class LoginTest extends ConfigurationScheduler {
         Assert.assertTrue(isFabPresent);
     }
 
-    @Test
-    public void loginStartLoginScreen() {
+    @Test(dataProvider = "loginModelDto", dataProviderClass = MyDataProvider.class)
+    public void loginAuthTestPositive(Auth auth) {
         boolean isFabPresent = new LoginScreen(driver)
-                .fillEmail("hog6@gmail.com")
-                .fillPassword("12345hoSg!")
-                .clickLoginBtn()
+                .loginComplexPositive(auth)
                 .skipWizard()
                 .isFabAddPresent();
 
         Assert.assertTrue(isFabPresent);
     }
 
-    @Test
-    public void loginAuthTestPositive() {
-        Auth user = Auth.builder()
-                .email("hog6@gmail.com")
-                .password("12345hoSg!")
-                .build();
+    @Test(dataProvider = "loginCsv", dataProviderClass = MyDataProvider.class)
+    public void loginAuthTestPositiveCsv(Auth auth) {
         boolean isFabPresent = new LoginScreen(driver)
-                .loginComlexPositive(user)
+                .loginComplexPositive(auth)
                 .skipWizard()
                 .isFabAddPresent();
 
         Assert.assertTrue(isFabPresent);
     }
 
-    @Test
+    @Test(dataProvider = "loginNegativeCsv", dataProviderClass = MyDataProvider.class)
     public void loginTestNegative1() {
         Auth user = Auth.builder()
                 .email("hog6gmail.com")
                 .password("12345hoSg!")
                 .build();
         boolean isLoginBtn = new LoginScreen(driver)
-                .loginComlexNegative(user)
+                .loginComplexNegative(user)
                 .isLoginBtn();
+
 
         Assert.assertTrue(isLoginBtn);
     }
 
-    @Test
-    public void loginTestNegative2() {
-        Auth user = Auth.builder()
-                .email("hog@com")
-                .password("12345hoSg!")
-                .build();
+    @Test(dataProvider = "loginNegativeCsv", dataProviderClass = MyDataProvider.class)
+    public void loginTestNegative2(Auth auth) {
         boolean isLoginBtn = new LoginScreen(driver)
-                .loginComlexNegative(user)
+                .loginComplexNegative(auth)
                 .isLoginBtn();
+
 
         Assert.assertTrue(isLoginBtn);
     }
 
+    @Test(dataProvider = "loginNegativeModelDto", dataProviderClass = MyDataProvider.class)
+    public void loginTestNegative3(Auth auth) {
+        boolean isLoginBtn = new LoginScreen(driver)
+                .loginComplexNegative(auth)
+                .checkErrorMessage("Wrong email or password")
+                .confirmErrorMessage()
+                .isLoginBtn();
+
+        Assert.assertTrue(isLoginBtn);
+    }
 }

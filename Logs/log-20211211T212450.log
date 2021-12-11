@@ -1,0 +1,17 @@
+21:25:08 INFO  config.ConfigurationScheduler - Start test --> loginAuthTestPositive
+21:25:43 INFO  config.ConfigurationScheduler - ================================================================
+21:25:43 INFO  config.ConfigurationScheduler - Start test --> loginAuthTestPositive
+21:26:11 INFO  config.ConfigurationScheduler - ================================================================
+21:26:11 INFO  config.ConfigurationScheduler - Start test --> loginAuthTestPositiveCsv
+21:26:38 INFO  config.ConfigurationScheduler - ================================================================
+21:26:38 INFO  config.ConfigurationScheduler - Start test --> loginAuthTestPositiveCsv
+21:27:01 INFO  config.ConfigurationScheduler - ================================================================
+21:27:01 INFO  config.ConfigurationScheduler - Start test --> loginAuthTestPositiveCsv
+21:27:17 INFO  config.ConfigurationScheduler - ================================================================
+21:27:17 INFO  config.ConfigurationScheduler - Start test --> loginStartLoginScreen
+21:27:46 INFO  config.ConfigurationScheduler - ================================================================
+21:27:46 INFO  config.ConfigurationScheduler - Start test --> loginStartLoginScreen
+21:28:10 INFO  config.ConfigurationScheduler - ================================================================
+21:28:10 INFO  config.ConfigurationScheduler - Start test --> loginStartLoginScreen
+21:28:37 INFO  config.ConfigurationScheduler - ================================================================
+21:28:37 INFO  config.ConfigurationScheduler - Start test --> loginTestNegative2
