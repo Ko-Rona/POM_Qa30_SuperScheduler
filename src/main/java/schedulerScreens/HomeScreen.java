@@ -44,4 +44,14 @@ public class HomeScreen extends BaseScreen {
     public boolean isLogged() {
         return isDisplayedWithExp(burgerBtn);
     }
+
+    public HomeScreen openMenu() {
+        burgerBtn.click();
+        return this;
+    }
+
+    public LoginScreen logOut(){
+        logout.click();
+        return new LoginScreen(driver);
+    }
 }

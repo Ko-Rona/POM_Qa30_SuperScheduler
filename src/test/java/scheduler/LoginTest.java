@@ -20,6 +20,19 @@ public class LoginTest extends ConfigurationScheduler {
         }
     }
 
+    @Test(dataProvider = "loginModelDto", dataProviderClass = MyDataProvider.class)
+    public void loginAuthTestPositive2(Auth auth) {
+        boolean isBtm = new LoginScreen(driver)
+                .loginComplexPositive(auth)
+                .skipWizard()
+                .isFabAddPresentAssert()
+                .openMenu()
+                .logOut()
+                .isLoginBtn();
+
+        Assert.assertTrue(isBtm);
+    }
+
 //    @Test(dataProvider = "loginDto", dataProviderClass = MyDataProvider.class)
 //    public void loginSuccessTest(String version, String email, String password) {
 //        boolean isFabPresent = new SplashScreen(driver)

@@ -2,7 +2,9 @@ package config;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.events.EventFiringWebDriverFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -17,7 +19,7 @@ import java.net.URL;
 public class ConfigurationScheduler {
 
     protected static AppiumDriver<MobileElement> driver;
-    Logger logger = LoggerFactory.getLogger(ConfigurationScheduler.class);
+    protected Logger logger = LoggerFactory.getLogger(ConfigurationScheduler.class);
 //    protected static AppiumDriver<IOSElement> driver;
 //    protected static AppiumDriver<AndroidElement> driver;
 
@@ -42,6 +44,7 @@ public class ConfigurationScheduler {
         capabilities.setCapability("app", "C:/Tools/v.0.0.3.apk");
 
         driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        //driver = EventFiringWebDriverFactory.getEventFiringWebDriver(driver, new AppiumListener());
 
     }
 
