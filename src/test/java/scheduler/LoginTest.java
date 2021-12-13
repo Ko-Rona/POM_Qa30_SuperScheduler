@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import schedulerScreens.HomeScreen;
 import schedulerScreens.LoginScreen;
+import schedulerScreens.SplashScreen;
 
 public class LoginTest extends ConfigurationScheduler {
 
@@ -33,19 +34,19 @@ public class LoginTest extends ConfigurationScheduler {
         Assert.assertTrue(isBtm);
     }
 
-//    @Test(dataProvider = "loginDto", dataProviderClass = MyDataProvider.class)
-//    public void loginSuccessTest(String version, String email, String password) {
-//        boolean isFabPresent = new SplashScreen(driver)
-//                .checkVersion(version)
-//                .fillEmail(email)
-//                .fillPassword(password)
-//                .clickLoginBtn()
-//                .skipWizard()
-//                .isFabAddPresent();
-//
-//
-//        Assert.assertTrue(isFabPresent);
-//    }
+    @Test(dataProvider = "loginDto", dataProviderClass = MyDataProvider.class, enabled = false)
+    public void loginSuccessTest(String version, String email, String password) {
+        boolean isFabPresent = new SplashScreen(driver)
+                .checkVersion(version)
+                .fillEmail(email)
+                .fillPassword(password)
+                .clickLoginBtn()
+                .skipWizard()
+                .isFabAddPresent();
+
+
+        Assert.assertTrue(isFabPresent);
+    }
 
     @Test(dataProvider = "loginDto2", dataProviderClass = MyDataProvider.class)
     public void loginStartLoginScreen(String email, String password) {
@@ -80,15 +81,10 @@ public class LoginTest extends ConfigurationScheduler {
     }
 
     @Test(dataProvider = "loginNegativeCsv", dataProviderClass = MyDataProvider.class)
-    public void loginTestNegative1() {
-        Auth user = Auth.builder()
-                .email("hog6gmail.com")
-                .password("12345hoSg!")
-                .build();
+    public void loginTestNegative1(Auth auth) {
         boolean isLoginBtn = new LoginScreen(driver)
-                .loginComplexNegative(user)
+                .loginComplexNegative(auth)
                 .isLoginBtn();
-
 
         Assert.assertTrue(isLoginBtn);
     }
