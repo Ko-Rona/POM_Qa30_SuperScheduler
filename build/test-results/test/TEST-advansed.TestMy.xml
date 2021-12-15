@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="advansed.TestMy" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-13T18:49:52" hostname="DESKTOP-LB14E35" time="1.572">
-  <properties/>
-  <testcase name="pre" classname="advansed.TestMy" time="1.572"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
