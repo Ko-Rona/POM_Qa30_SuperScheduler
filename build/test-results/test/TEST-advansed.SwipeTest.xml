@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="advansed.SwipeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-15T18:15:23" hostname="DESKTOP-LB14E35" time="7.936">
+<testsuite name="advansed.SwipeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-16T15:33:48" hostname="DESKTOP-LB14E35" time="12.87">
   <properties/>
-  <testcase name="swipeTest2" classname="advansed.SwipeTest" time="7.936"/>
+  <testcase name="swipeTestVertical2" classname="advansed.SwipeTest" time="12.87"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

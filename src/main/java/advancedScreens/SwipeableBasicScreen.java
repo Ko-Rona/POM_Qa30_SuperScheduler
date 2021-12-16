@@ -34,7 +34,6 @@ public class SwipeableBasicScreen extends BaseScreenADV {
                 .moveTo(PointOption.point(xTo, y))
                 .release()
                 .perform();
-
         return this;
     }
 
